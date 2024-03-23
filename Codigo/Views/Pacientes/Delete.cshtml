@@ -1,0 +1,119 @@
+﻿@model SistemaCadernetaPediatrica.Paciente
+
+@{
+    ViewBag.Title = "Sistema Caderneta Pediátrica";
+}
+
+<h2>Remover - Paciente</h2>
+
+<h3>Você deseja realmente remover esse paciente?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataNascimento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoSanguineo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoSanguineo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ictericia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ictericia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReflexoVermelho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReflexoVermelho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TestePezinho)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TestePezinho)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TriagemAuditiva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TriagemAuditiva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacoes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacoes)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>

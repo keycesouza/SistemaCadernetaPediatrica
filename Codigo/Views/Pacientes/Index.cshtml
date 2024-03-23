@@ -1,0 +1,76 @@
+﻿@model IEnumerable<SistemaCadernetaPediatrica.Paciente>
+
+@{
+    ViewBag.Title = "Sistema Caderneta Pediátrica";
+}
+
+<h2>Pacientes</h2>
+
+<p>
+    @Html.ActionLink("Cadastrar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Nome")
+        </th>
+        <th>
+            @Html.DisplayName("Data Nascimento")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Peso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estatura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoSanguineo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ictericia)
+        </th>        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Peso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estatura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoSanguineo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ictericia)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Alterar", "Edit", new { id=item.IdPaciente }) |
+            @Html.ActionLink("Visualizar", "Details", new { id=item.IdPaciente }) |
+            @Html.ActionLink("Remover", "Delete", new { id=item.IdPaciente })
+        </td>
+    </tr>
+}
+
+</table>

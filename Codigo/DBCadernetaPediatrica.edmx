@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CadernetaPediatricaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ControlePediatrio">
+          <Key>
+            <PropertyRef Name="IdControlePediatrio" />
+          </Key>
+          <Property Name="IdControlePediatrio" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPaciente" Type="bigint" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Idade" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Peso" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Estatura" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="PCef" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="IMC" Type="decimal" Precision="6" Scale="3" />
+          <Property Name="Observacoes" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="IdPaciente" />
+          </Key>
+          <Property Name="IdPaciente" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DataNascimento" Type="datetime" Nullable="false" />
+          <Property Name="Peso" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Estatura" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="PC" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="PT" Type="decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="TipoSanguineo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Ictericia" Type="bit" Nullable="false" />
+          <Property Name="ReflexoVermelho" Type="varchar" MaxLength="50" />
+          <Property Name="TestePezinho" Type="varchar" MaxLength="50" />
+          <Property Name="TriagemAuditiva" Type="varchar" MaxLength="50" />
+          <Property Name="Observacoes" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_ControlePediatrio_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="ControlePediatrio" Type="Self.ControlePediatrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IdPaciente" />
+            </Principal>
+            <Dependent Role="ControlePediatrio">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CadernetaPediatricaModelStoreContainer">
+          <EntitySet Name="ControlePediatrio" EntityType="Self.ControlePediatrio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Paciente" EntityType="Self.Paciente" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ControlePediatrio_Paciente" Association="Self.FK_ControlePediatrio_Paciente">
+            <End Role="Paciente" EntitySet="Paciente" />
+            <End Role="ControlePediatrio" EntitySet="ControlePediatrio" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CadernetaPediatricaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ControlePediatrio">
+          <Key>
+            <PropertyRef Name="IdControlePediatrio" />
+          </Key>
+          <Property Name="IdControlePediatrio" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPaciente" Type="Int64" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Idade" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Peso" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Estatura" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="PCef" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="IMC" Type="Decimal" Precision="6" Scale="3" />
+          <Property Name="Observacoes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Paciente" Relationship="Self.FK_ControlePediatrio_Paciente" FromRole="ControlePediatrio" ToRole="Paciente" />
+        </EntityType>
+        <EntityType Name="Paciente">
+          <Key>
+            <PropertyRef Name="IdPaciente" />
+          </Key>
+          <Property Name="IdPaciente" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Peso" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="Estatura" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="PC" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="PT" Type="Decimal" Precision="6" Scale="3" Nullable="false" />
+          <Property Name="TipoSanguineo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ictericia" Type="Boolean" Nullable="false" />
+          <Property Name="ReflexoVermelho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TestePezinho" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TriagemAuditiva" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Observacoes" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ControlePediatrios" Relationship="Self.FK_ControlePediatrio_Paciente" FromRole="Paciente" ToRole="ControlePediatrio" />
+        </EntityType>
+        <Association Name="FK_ControlePediatrio_Paciente">
+          <End Role="Paciente" Type="Self.Paciente" Multiplicity="1" />
+          <End Role="ControlePediatrio" Type="Self.ControlePediatrio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Paciente">
+              <PropertyRef Name="IdPaciente" />
+            </Principal>
+            <Dependent Role="ControlePediatrio">
+              <PropertyRef Name="IdPaciente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CadernetaPediatricaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ControlePediatrios" EntityType="Self.ControlePediatrio" />
+          <EntitySet Name="Pacientes" EntityType="Self.Paciente" />
+          <AssociationSet Name="FK_ControlePediatrio_Paciente" Association="Self.FK_ControlePediatrio_Paciente">
+            <End Role="Paciente" EntitySet="Pacientes" />
+            <End Role="ControlePediatrio" EntitySet="ControlePediatrios" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CadernetaPediatricaModelStoreContainer" CdmEntityContainer="CadernetaPediatricaEntities">
+          <EntitySetMapping Name="ControlePediatrios">
+            <EntityTypeMapping TypeName="CadernetaPediatricaModel.ControlePediatrio">
+              <MappingFragment StoreEntitySet="ControlePediatrio">
+                <ScalarProperty Name="IdControlePediatrio" ColumnName="IdControlePediatrio" />
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Idade" ColumnName="Idade" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Estatura" ColumnName="Estatura" />
+                <ScalarProperty Name="PCef" ColumnName="PCef" />
+                <ScalarProperty Name="IMC" ColumnName="IMC" />
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pacientes">
+            <EntityTypeMapping TypeName="CadernetaPediatricaModel.Paciente">
+              <MappingFragment StoreEntitySet="Paciente">
+                <ScalarProperty Name="IdPaciente" ColumnName="IdPaciente" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Estatura" ColumnName="Estatura" />
+                <ScalarProperty Name="PC" ColumnName="PC" />
+                <ScalarProperty Name="PT" ColumnName="PT" />
+                <ScalarProperty Name="TipoSanguineo" ColumnName="TipoSanguineo" />
+                <ScalarProperty Name="Ictericia" ColumnName="Ictericia" />
+                <ScalarProperty Name="ReflexoVermelho" ColumnName="ReflexoVermelho" />
+                <ScalarProperty Name="TestePezinho" ColumnName="TestePezinho" />
+                <ScalarProperty Name="TriagemAuditiva" ColumnName="TriagemAuditiva" />
+                <ScalarProperty Name="Observacoes" ColumnName="Observacoes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

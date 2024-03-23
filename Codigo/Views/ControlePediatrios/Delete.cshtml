@@ -1,0 +1,87 @@
+﻿@model SistemaCadernetaPediatrica.ControlePediatrio
+
+@{
+    ViewBag.Title = "Sistema Caderneta Pediátrica";
+}
+
+<h2>Remover - Controle Perdiátrico</h2>
+
+<h3>Você deseja realemte remover esse Controle Pediátrico?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Idade)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Idade)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Peso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Peso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PCef)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PCef)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IMC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IMC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacoes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacoes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paciente.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paciente.Nome)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Remover" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>
